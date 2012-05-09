@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+
+var xip = require('..');
+var argv = process.argv;
+
+if (argv.length < 3) {
+  console.error("usage: xip <domain> [address]");
+  process.exit(1);
+}
+
+var domain = argv[2];
+var address = argv[3];
+var server = xip.createServer(domain, address);
+server.bind(5300);
+
+console.log("xip listening on port 5300: domain =", domain, "address =", address);
