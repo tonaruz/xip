@@ -54,12 +54,11 @@ exports.createServer = (domain, address = "127.0.0.1") ->
   server.on "request", (req, res) ->
     q = req.question ? {}
     subdomain = match q.name
-    res.header.aa = 1 if subdomain?
 
     if q.type is NS_T_A and q.class is NS_C_IN and subdomain?
       res.addRR q.name, NS_T_A, NS_C_IN, 600, decode(subdomain[0]) ? address
     else if q.type is NS_T_NS and q.class is NS_C_IN and subdomain?.length is 0
-      res.addRR q.name, NS_T_SOA, NS_C_IN, 600, soa
+      res.addRR q.name, NS_T_SOA, NS_C_IN, 600, soa, true
     else
       res.header.rcode = NS_RCODE_NXDOMAIN
 

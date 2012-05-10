@@ -12,7 +12,7 @@
   }
 , "main": "./lib/index.js"
 , "dependencies":
-  { "dnsserver.js": "https://github.com/sstephenson/dnsserver.js/tarball/f2e422f"
+  { "dnsserver.js": "https://github.com/sstephenson/dnsserver.js/tarball/08d2725"
   }
 , "devDependencies":
   { "nodeunit": ">=0.5.0"
