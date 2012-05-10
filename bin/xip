@@ -9,7 +9,7 @@ if (argv.length < 3) {
 }
 
 var domain = argv[2];
-var address = argv[3];
+var address = argv[3] || "127.0.0.1";
 var server = xip.createServer(domain, address);
 server.bind(5300);
 
