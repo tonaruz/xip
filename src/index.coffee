@@ -15,16 +15,13 @@ exports.encode = encode = (ip) ->
   (value >>> 0).toString 36
 
 exports.decode = decode = (string) ->
-  if PATTERN.test string
-    value = parseInt string, 36
-    ip = [value & 0xFF]
-    value >>= 8
+  return unless PATTERN.test string
+  value = parseInt string, 36
+  ip = []
+  for i in [1..4]
     ip.push value & 0xFF
     value >>= 8
-    ip.push value & 0xFF
-    value >>= 8
-    ip.push value & 0xFF
-    ip.join "."
+  ip.join "."
 
 createSOA = (domain) ->
   mname   = "ns-1.#{domain}"
