@@ -12,7 +12,7 @@ exports.encode = encode = (ip) ->
   value = 0
   for byte, index in ip.split "."
     value += parseInt(byte, 10) << (index * 8)
-  value.toString 36
+  (value >>> 0).toString 36
 
 exports.decode = decode = (string) ->
   if PATTERN.test string
